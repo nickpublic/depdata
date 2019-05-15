@@ -1,9 +1,10 @@
 # depdata
-dependency data for python projects
+This repository stores the dependency data of 105 Python projects.
 
-
+##1. Projects' information
 **python-projects-105.csv** lists the basic information of the projects that we investigated.
 
+##2. The dependencies extracted from source code for each project.
 One folder corresonds to one project, and the folder's name is same with the project's name.
 
 Under each folder,
