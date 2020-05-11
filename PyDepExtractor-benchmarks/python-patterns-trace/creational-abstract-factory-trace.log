@@ -1,0 +1,89 @@
+ --- modulename: abstract_factory, funcname: <module>
+abstract_factory.py(34): """
+abstract_factory.py(36): import random
+abstract_factory.py(39): class PetShop(object):
+ --- modulename: abstract_factory, funcname: PetShop
+abstract_factory.py(39): class PetShop(object):
+abstract_factory.py(41):     """A pet shop"""
+abstract_factory.py(43):     def __init__(self, animal_factory=None):
+abstract_factory.py(48):     def show_pet(self):
+abstract_factory.py(56): class Dog(object):
+ --- modulename: abstract_factory, funcname: Dog
+abstract_factory.py(56): class Dog(object):
+abstract_factory.py(58):     def speak(self):
+abstract_factory.py(61):     def __str__(self):
+abstract_factory.py(65): class Cat(object):
+ --- modulename: abstract_factory, funcname: Cat
+abstract_factory.py(65): class Cat(object):
+abstract_factory.py(67):     def speak(self):
+abstract_factory.py(70):     def __str__(self):
+abstract_factory.py(77): def random_animal():
+abstract_factory.py(83): if __name__ == "__main__":
+abstract_factory.py(86):     cat_shop = PetShop(Cat)
+ --- modulename: abstract_factory, funcname: __init__
+abstract_factory.py(46):         self.pet_factory = animal_factory
+abstract_factory.py(87):     cat_shop.show_pet()
+ --- modulename: abstract_factory, funcname: show_pet
+abstract_factory.py(51):         pet = self.pet_factory()
+abstract_factory.py(52):         print("We have a lovely {}".format(pet))
+ --- modulename: abstract_factory, funcname: __str__
+abstract_factory.py(71):         return "Cat"
+We have a lovely Cat
+abstract_factory.py(53):         print("It says {}".format(pet.speak()))
+ --- modulename: abstract_factory, funcname: speak
+abstract_factory.py(68):         return "meow"
+It says meow
+abstract_factory.py(88):     print("")
+
+abstract_factory.py(91):     shop = PetShop(random_animal)
+ --- modulename: abstract_factory, funcname: __init__
+abstract_factory.py(46):         self.pet_factory = animal_factory
+abstract_factory.py(92):     for i in range(3):
+abstract_factory.py(93):         shop.show_pet()
+ --- modulename: abstract_factory, funcname: show_pet
+abstract_factory.py(51):         pet = self.pet_factory()
+ --- modulename: abstract_factory, funcname: random_animal
+abstract_factory.py(79):     return random.choice([Dog, Cat])()
+abstract_factory.py(52):         print("We have a lovely {}".format(pet))
+ --- modulename: abstract_factory, funcname: __str__
+abstract_factory.py(62):         return "Dog"
+We have a lovely Dog
+abstract_factory.py(53):         print("It says {}".format(pet.speak()))
+ --- modulename: abstract_factory, funcname: speak
+abstract_factory.py(59):         return "woof"
+It says woof
+abstract_factory.py(94):         print("=" * 20)
+====================
+abstract_factory.py(92):     for i in range(3):
+abstract_factory.py(93):         shop.show_pet()
+ --- modulename: abstract_factory, funcname: show_pet
+abstract_factory.py(51):         pet = self.pet_factory()
+ --- modulename: abstract_factory, funcname: random_animal
+abstract_factory.py(79):     return random.choice([Dog, Cat])()
+abstract_factory.py(52):         print("We have a lovely {}".format(pet))
+ --- modulename: abstract_factory, funcname: __str__
+abstract_factory.py(62):         return "Dog"
+We have a lovely Dog
+abstract_factory.py(53):         print("It says {}".format(pet.speak()))
+ --- modulename: abstract_factory, funcname: speak
+abstract_factory.py(59):         return "woof"
+It says woof
+abstract_factory.py(94):         print("=" * 20)
+====================
+abstract_factory.py(92):     for i in range(3):
+abstract_factory.py(93):         shop.show_pet()
+ --- modulename: abstract_factory, funcname: show_pet
+abstract_factory.py(51):         pet = self.pet_factory()
+ --- modulename: abstract_factory, funcname: random_animal
+abstract_factory.py(79):     return random.choice([Dog, Cat])()
+abstract_factory.py(52):         print("We have a lovely {}".format(pet))
+ --- modulename: abstract_factory, funcname: __str__
+abstract_factory.py(71):         return "Cat"
+We have a lovely Cat
+abstract_factory.py(53):         print("It says {}".format(pet.speak()))
+ --- modulename: abstract_factory, funcname: speak
+abstract_factory.py(68):         return "meow"
+It says meow
+abstract_factory.py(94):         print("=" * 20)
+====================
+abstract_factory.py(92):     for i in range(3):

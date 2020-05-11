@@ -1,0 +1,101 @@
+ --- modulename: adapter, funcname: <module>
+adapter.py(32): """
+adapter.py(35): class Dog(object):
+ --- modulename: adapter, funcname: Dog
+adapter.py(35): class Dog(object):
+adapter.py(37):     def __init__(self):
+adapter.py(40):     def bark(self):
+adapter.py(44): class Cat(object):
+ --- modulename: adapter, funcname: Cat
+adapter.py(44): class Cat(object):
+adapter.py(46):     def __init__(self):
+adapter.py(49):     def meow(self):
+adapter.py(53): class Human(object):
+ --- modulename: adapter, funcname: Human
+adapter.py(53): class Human(object):
+adapter.py(55):     def __init__(self):
+adapter.py(58):     def speak(self):
+adapter.py(62): class Car(object):
+ --- modulename: adapter, funcname: Car
+adapter.py(62): class Car(object):
+adapter.py(64):     def __init__(self):
+adapter.py(67):     def make_noise(self, octane_level):
+adapter.py(71): class Adapter(object):
+ --- modulename: adapter, funcname: Adapter
+adapter.py(71): class Adapter(object):
+adapter.py(99):     """
+adapter.py(101):     def __init__(self, obj, **adapted_methods):
+adapter.py(106):     def __getattr__(self, attr):
+adapter.py(110):     def original_dict(self):
+adapter.py(114): def main():
+adapter.py(133): if __name__ == "__main__":
+adapter.py(134):     main()
+ --- modulename: adapter, funcname: main
+adapter.py(116):     objects = []
+adapter.py(117):     dog = Dog()
+ --- modulename: adapter, funcname: __init__
+adapter.py(38):         self.name = "Dog"
+adapter.py(118):     print(dog.__dict__)
+{'name': 'Dog'}
+adapter.py(119):     objects.append(Adapter(dog, make_noise=dog.bark))
+ --- modulename: adapter, funcname: __init__
+adapter.py(103):         self.obj = obj
+adapter.py(104):         self.__dict__.update(adapted_methods)
+adapter.py(120):     print(objects[0].__dict__)
+{'obj': <__main__.Dog object at 0x0000020AB92A32E8>, 'make_noise': <bound method Dog.bark of <__main__.Dog object at 0x0000020AB92A32E8>>}
+adapter.py(121):     print(objects[0].original_dict())
+ --- modulename: adapter, funcname: original_dict
+adapter.py(112):         return self.obj.__dict__
+{'name': 'Dog'}
+adapter.py(122):     cat = Cat()
+ --- modulename: adapter, funcname: __init__
+adapter.py(47):         self.name = "Cat"
+adapter.py(123):     objects.append(Adapter(cat, make_noise=cat.meow))
+ --- modulename: adapter, funcname: __init__
+adapter.py(103):         self.obj = obj
+adapter.py(104):         self.__dict__.update(adapted_methods)
+adapter.py(124):     human = Human()
+ --- modulename: adapter, funcname: __init__
+adapter.py(56):         self.name = "Human"
+adapter.py(125):     objects.append(Adapter(human, make_noise=human.speak))
+ --- modulename: adapter, funcname: __init__
+adapter.py(103):         self.obj = obj
+adapter.py(104):         self.__dict__.update(adapted_methods)
+adapter.py(126):     car = Car()
+ --- modulename: adapter, funcname: __init__
+adapter.py(65):         self.name = "Car"
+adapter.py(127):     objects.append(Adapter(car, make_noise=lambda: car.make_noise(3)))
+ --- modulename: adapter, funcname: __init__
+adapter.py(103):         self.obj = obj
+adapter.py(104):         self.__dict__.update(adapted_methods)
+adapter.py(129):     for obj in objects:
+adapter.py(130):         print("A {0} goes {1}".format(obj.name, obj.make_noise()))
+ --- modulename: adapter, funcname: __getattr__
+adapter.py(108):         return getattr(self.obj, attr)
+ --- modulename: adapter, funcname: bark
+adapter.py(41):         return "woof!"
+A Dog goes woof!
+adapter.py(129):     for obj in objects:
+adapter.py(130):         print("A {0} goes {1}".format(obj.name, obj.make_noise()))
+ --- modulename: adapter, funcname: __getattr__
+adapter.py(108):         return getattr(self.obj, attr)
+ --- modulename: adapter, funcname: meow
+adapter.py(50):         return "meow!"
+A Cat goes meow!
+adapter.py(129):     for obj in objects:
+adapter.py(130):         print("A {0} goes {1}".format(obj.name, obj.make_noise()))
+ --- modulename: adapter, funcname: __getattr__
+adapter.py(108):         return getattr(self.obj, attr)
+ --- modulename: adapter, funcname: speak
+adapter.py(59):         return "'hello'"
+A Human goes 'hello'
+adapter.py(129):     for obj in objects:
+adapter.py(130):         print("A {0} goes {1}".format(obj.name, obj.make_noise()))
+ --- modulename: adapter, funcname: __getattr__
+adapter.py(108):         return getattr(self.obj, attr)
+ --- modulename: adapter, funcname: <lambda>
+adapter.py(127):     objects.append(Adapter(car, make_noise=lambda: car.make_noise(3)))
+ --- modulename: adapter, funcname: make_noise
+adapter.py(68):         return "vroom{0}".format("!" * octane_level)
+A Car goes vroom!!!
+adapter.py(129):     for obj in objects:

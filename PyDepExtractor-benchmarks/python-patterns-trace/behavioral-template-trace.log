@@ -1,0 +1,312 @@
+ --- modulename: template, funcname: <module>
+template.py(11): """
+template.py(13): ingredients = "spam eggs apple"
+template.py(14): line = '-' * 10
+template.py(18): def iter_elements(getter, action):
+template.py(25): def rev_elements(getter, action):
+template.py(33): def get_list():
+template.py(37): def get_lists():
+template.py(42): def print_item(item):
+template.py(46): def reverse_item(item):
+template.py(51): def make_template(skeleton, getter, action):
+template.py(58): templates = [make_template(s, g, a)
+template.py(59):              for g in (get_list, get_lists)
+ --- modulename: template, funcname: <listcomp>
+template.py(58): templates = [make_template(s, g, a)
+template.py(60):              for a in (print_item, reverse_item)
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+template.py(60):              for a in (print_item, reverse_item)
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+template.py(60):              for a in (print_item, reverse_item)
+template.py(58): templates = [make_template(s, g, a)
+template.py(60):              for a in (print_item, reverse_item)
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+template.py(60):              for a in (print_item, reverse_item)
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+ --- modulename: template, funcname: make_template
+template.py(53):     def template():
+template.py(55):     return template
+template.py(61):              for s in (iter_elements, rev_elements)]
+template.py(60):              for a in (print_item, reverse_item)
+template.py(58): templates = [make_template(s, g, a)
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: iter_elements
+template.py(20):     for element in getter():
+ --- modulename: template, funcname: get_list
+template.py(34):     return ingredients.split()
+template.py(21):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+spam
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+eggs
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+apple
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: rev_elements
+template.py(27):     for element in getter()[::-1]:
+ --- modulename: template, funcname: get_list
+template.py(34):     return ingredients.split()
+template.py(28):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+apple
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+eggs
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+spam
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: iter_elements
+template.py(20):     for element in getter():
+ --- modulename: template, funcname: get_list
+template.py(34):     return ingredients.split()
+template.py(21):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+maps
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+sgge
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+elppa
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: rev_elements
+template.py(27):     for element in getter()[::-1]:
+ --- modulename: template, funcname: get_list
+template.py(34):     return ingredients.split()
+template.py(28):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+elppa
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+sgge
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+maps
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: iter_elements
+template.py(20):     for element in getter():
+ --- modulename: template, funcname: get_lists
+template.py(38):     return [list(x) for x in ingredients.split()]
+ --- modulename: template, funcname: <listcomp>
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(21):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+['s', 'p', 'a', 'm']
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+['e', 'g', 'g', 's']
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+['a', 'p', 'p', 'l', 'e']
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: rev_elements
+template.py(27):     for element in getter()[::-1]:
+ --- modulename: template, funcname: get_lists
+template.py(38):     return [list(x) for x in ingredients.split()]
+ --- modulename: template, funcname: <listcomp>
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(28):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+['a', 'p', 'p', 'l', 'e']
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+['e', 'g', 'g', 's']
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: print_item
+template.py(43):     print(item)
+['s', 'p', 'a', 'm']
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: iter_elements
+template.py(20):     for element in getter():
+ --- modulename: template, funcname: get_lists
+template.py(38):     return [list(x) for x in ingredients.split()]
+ --- modulename: template, funcname: <listcomp>
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(21):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+['m', 'a', 'p', 's']
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+['s', 'g', 'g', 'e']
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(21):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+['e', 'l', 'p', 'p', 'a']
+template.py(22):         print(line)
+----------
+template.py(20):     for element in getter():
+template.py(64): for template in templates:
+template.py(65):     template()
+ --- modulename: template, funcname: template
+template.py(54):         skeleton(getter, action)
+ --- modulename: template, funcname: rev_elements
+template.py(27):     for element in getter()[::-1]:
+ --- modulename: template, funcname: get_lists
+template.py(38):     return [list(x) for x in ingredients.split()]
+ --- modulename: template, funcname: <listcomp>
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(38):     return [list(x) for x in ingredients.split()]
+template.py(28):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+['e', 'l', 'p', 'p', 'a']
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+['s', 'g', 'g', 'e']
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(28):         action(element)
+ --- modulename: template, funcname: reverse_item
+template.py(47):     print(item[::-1])
+['m', 'a', 'p', 's']
+template.py(29):         print(line)
+----------
+template.py(27):     for element in getter()[::-1]:
+template.py(64): for template in templates:

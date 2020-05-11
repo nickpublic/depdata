@@ -1,0 +1,178 @@
+ --- modulename: memento, funcname: <module>
+memento.py(9): """
+memento.py(11): from copy import copy
+memento.py(12): from copy import deepcopy
+memento.py(15): def memento(obj, deep=False):
+memento.py(25): class Transaction(object):
+ --- modulename: memento, funcname: Transaction
+memento.py(25): class Transaction(object):
+memento.py(29):     """
+memento.py(30):     deep = False
+memento.py(31):     states = []
+memento.py(33):     def __init__(self, deep, *targets):
+memento.py(38):     def commit(self):
+memento.py(41):     def rollback(self):
+memento.py(46): class Transactional(object):
+ --- modulename: memento, funcname: Transactional
+memento.py(46): class Transactional(object):
+memento.py(50):     """
+memento.py(52):     def __init__(self, method):
+memento.py(55):     def __get__(self, obj, T):
+memento.py(67): class NumObj(object):
+ --- modulename: memento, funcname: NumObj
+memento.py(67): class NumObj(object):
+memento.py(69):     def __init__(self, value):
+memento.py(72):     def __repr__(self):
+memento.py(75):     def increment(self):
+memento.py(78):     @Transactional
+ --- modulename: memento, funcname: __init__
+memento.py(53):         self.method = method
+memento.py(84): if __name__ == '__main__':
+memento.py(85):     num_obj = NumObj(-1)
+ --- modulename: memento, funcname: __init__
+memento.py(70):         self.value = value
+memento.py(86):     print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: -1>
+memento.py(88):     a_transaction = Transaction(True, num_obj)
+ --- modulename: memento, funcname: __init__
+memento.py(34):         self.deep = deep
+memento.py(35):         self.targets = targets
+memento.py(36):         self.commit()
+ --- modulename: memento, funcname: commit
+memento.py(39):         self.states = [memento(target, self.deep) for target in self.targets]
+ --- modulename: memento, funcname: <listcomp>
+memento.py(39):         self.states = [memento(target, self.deep) for target in self.targets]
+ --- modulename: memento, funcname: memento
+memento.py(16):     state = deepcopy(obj.__dict__) if deep else copy(obj.__dict__)
+memento.py(18):     def restore():
+memento.py(22):     return restore
+memento.py(39):         self.states = [memento(target, self.deep) for target in self.targets]
+memento.py(89):     try:
+memento.py(90):         for i in range(3):
+memento.py(91):             num_obj.increment()
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(92):             print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 0>
+memento.py(90):         for i in range(3):
+memento.py(91):             num_obj.increment()
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(92):             print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 1>
+memento.py(90):         for i in range(3):
+memento.py(91):             num_obj.increment()
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(92):             print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 2>
+memento.py(90):         for i in range(3):
+memento.py(93):         a_transaction.commit()
+ --- modulename: memento, funcname: commit
+memento.py(39):         self.states = [memento(target, self.deep) for target in self.targets]
+ --- modulename: memento, funcname: <listcomp>
+memento.py(39):         self.states = [memento(target, self.deep) for target in self.targets]
+ --- modulename: memento, funcname: memento
+memento.py(16):     state = deepcopy(obj.__dict__) if deep else copy(obj.__dict__)
+memento.py(18):     def restore():
+memento.py(22):     return restore
+memento.py(39):         self.states = [memento(target, self.deep) for target in self.targets]
+memento.py(94):         print('-- committed')
+-- committed
+memento.py(96):         for i in range(3):
+memento.py(97):             num_obj.increment()
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(98):             print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 3>
+memento.py(96):         for i in range(3):
+memento.py(97):             num_obj.increment()
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(98):             print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 4>
+memento.py(96):         for i in range(3):
+memento.py(97):             num_obj.increment()
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(98):             print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 5>
+memento.py(96):         for i in range(3):
+memento.py(99):         num_obj.value += 'x'  # will fail
+memento.py(101):     except Exception as e:
+memento.py(102):         a_transaction.rollback()
+ --- modulename: memento, funcname: rollback
+memento.py(42):         for a_state in self.states:
+memento.py(43):             a_state()
+ --- modulename: memento, funcname: restore
+memento.py(19):         obj.__dict__.clear()
+memento.py(20):         obj.__dict__.update(state)
+memento.py(42):         for a_state in self.states:
+memento.py(103):         print('-- rolled back')
+-- rolled back
+memento.py(104):     print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 2>
+memento.py(106):     print('-- now doing stuff ...')
+-- now doing stuff ...
+memento.py(107):     try:
+memento.py(108):         num_obj.do_stuff()
+ --- modulename: memento, funcname: __get__
+memento.py(56):         def transaction(*args, **kwargs):
+memento.py(64):         return transaction
+ --- modulename: memento, funcname: transaction
+memento.py(57):             state = memento(obj)
+ --- modulename: memento, funcname: memento
+memento.py(16):     state = deepcopy(obj.__dict__) if deep else copy(obj.__dict__)
+memento.py(18):     def restore():
+memento.py(22):     return restore
+memento.py(58):             try:
+memento.py(59):                 return self.method(obj, *args, **kwargs)
+ --- modulename: memento, funcname: do_stuff
+memento.py(80):         self.value = '1111'  # <- invalid value
+memento.py(81):         self.increment()  # <- will fail and rollback
+ --- modulename: memento, funcname: increment
+memento.py(76):         self.value += 1
+memento.py(60):             except Exception as e:
+memento.py(61):                 state()
+ --- modulename: memento, funcname: restore
+memento.py(19):         obj.__dict__.clear()
+memento.py(20):         obj.__dict__.update(state)
+memento.py(62):                 raise e
+memento.py(109):     except Exception as e:
+memento.py(110):         print('-> doing stuff failed!')
+-> doing stuff failed!
+memento.py(111):         import sys
+memento.py(112):         import traceback
+memento.py(114):         traceback.print_exc(file=sys.stdout)
+Traceback (most recent call last):
+  File "behavioral/memento.py", line 108, in <module>
+    num_obj.do_stuff()
+  File "behavioral/memento.py", line 62, in transaction
+    raise e
+  File "behavioral/memento.py", line 59, in transaction
+    return self.method(obj, *args, **kwargs)
+  File "behavioral/memento.py", line 81, in do_stuff
+    self.increment()  # <- will fail and rollback
+  File "behavioral/memento.py", line 76, in increment
+    self.value += 1
+TypeError: can only concatenate str (not "int") to str
+memento.py(115):     print(num_obj)
+ --- modulename: memento, funcname: __repr__
+memento.py(73):         return '<%s: %r>' % (self.__class__.__name__, self.value)
+<NumObj: 2>

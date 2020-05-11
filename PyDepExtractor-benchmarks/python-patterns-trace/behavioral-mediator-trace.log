@@ -1,0 +1,203 @@
+ --- modulename: mediator, funcname: <module>
+mediator.py(9): """
+mediator.py(11): import random
+mediator.py(12): import time
+mediator.py(15): class TC:
+ --- modulename: mediator, funcname: TC
+mediator.py(15): class TC:
+mediator.py(17):     def __init__(self):
+mediator.py(21):     def setup(self):
+mediator.py(26):     def execute(self):
+mediator.py(33):     def tearDown(self):
+mediator.py(41):     def setTM(self, tm):
+mediator.py(44):     def setProblem(self, value):
+mediator.py(48): class Reporter:
+ --- modulename: mediator, funcname: Reporter
+mediator.py(48): class Reporter:
+mediator.py(50):     def __init__(self):
+mediator.py(53):     def prepare(self):
+mediator.py(57):     def report(self):
+mediator.py(61):     def setTM(self, tm):
+mediator.py(65): class DB:
+ --- modulename: mediator, funcname: DB
+mediator.py(65): class DB:
+mediator.py(67):     def __init__(self):
+mediator.py(70):     def insert(self):
+mediator.py(77):     def update(self):
+mediator.py(81):     def setTM(self, tm):
+mediator.py(85): class TestManager:
+ --- modulename: mediator, funcname: TestManager
+mediator.py(85): class TestManager:
+mediator.py(87):     def __init__(self):
+mediator.py(92):     def prepareReporting(self):
+mediator.py(98):     def setReporter(self, reporter):
+mediator.py(101):     def setDB(self, db):
+mediator.py(104):     def publishReport(self):
+mediator.py(108):     def setTC(self, tc):
+mediator.py(112): if __name__ == '__main__':
+mediator.py(113):     reporter = Reporter()
+ --- modulename: mediator, funcname: __init__
+mediator.py(51):         self._tm = None
+mediator.py(114):     db = DB()
+ --- modulename: mediator, funcname: __init__
+mediator.py(68):         self._tm = None
+mediator.py(115):     tm = TestManager()
+ --- modulename: mediator, funcname: __init__
+mediator.py(88):         self._reporter = None
+mediator.py(89):         self._db = None
+mediator.py(90):         self._tc = None
+mediator.py(116):     tm.setReporter(reporter)
+ --- modulename: mediator, funcname: setReporter
+mediator.py(99):         self._reporter = reporter
+mediator.py(117):     tm.setDB(db)
+ --- modulename: mediator, funcname: setDB
+mediator.py(102):         self._db = db
+mediator.py(118):     reporter.setTM(tm)
+ --- modulename: mediator, funcname: setTM
+mediator.py(62):         self._tm = tm
+mediator.py(119):     db.setTM(tm)
+ --- modulename: mediator, funcname: setTM
+mediator.py(82):         self._tm = tm
+mediator.py(123):     for i in range(3):
+mediator.py(124):         tc = TC()
+ --- modulename: mediator, funcname: __init__
+mediator.py(18):         self._tm = None
+mediator.py(19):         self._bProblem = 0
+mediator.py(125):         tc.setTM(tm)
+ --- modulename: mediator, funcname: setTM
+mediator.py(42):         self._tm = tm
+mediator.py(126):         tm.setTC(tc)
+ --- modulename: mediator, funcname: setTC
+mediator.py(109):         self._tc = tc
+mediator.py(127):         tc.setup()
+ --- modulename: mediator, funcname: setup
+mediator.py(22):         print("Setting up the Test")
+Setting up the Test
+mediator.py(23):         time.sleep(0.1)
+mediator.py(24):         self._tm.prepareReporting()
+ --- modulename: mediator, funcname: prepareReporting
+mediator.py(93):         rvalue = self._db.insert()
+ --- modulename: mediator, funcname: insert
+mediator.py(71):         print("Inserting the execution begin status in the Database")
+Inserting the execution begin status in the Database
+mediator.py(72):         time.sleep(0.1)
+mediator.py(74):         if random.randrange(1, 4) == 3:
+mediator.py(75):             return -1
+mediator.py(94):         if rvalue == -1:
+mediator.py(95):             self._tc.setProblem(1)
+ --- modulename: mediator, funcname: setProblem
+mediator.py(45):         self._bProblem = value
+mediator.py(96):             self._reporter.prepare()
+ --- modulename: mediator, funcname: prepare
+mediator.py(54):         print("Reporter Class is preparing to report the results")
+Reporter Class is preparing to report the results
+mediator.py(55):         time.sleep(0.1)
+mediator.py(128):         tc.execute()
+ --- modulename: mediator, funcname: execute
+mediator.py(27):         if not self._bProblem:
+mediator.py(31):             print("Problem in setup. Test not executed.")
+Problem in setup. Test not executed.
+mediator.py(129):         tc.tearDown()
+ --- modulename: mediator, funcname: tearDown
+mediator.py(34):         if not self._bProblem:
+mediator.py(39):             print("Test not executed. No tear down required.")
+Test not executed. No tear down required.
+mediator.py(123):     for i in range(3):
+mediator.py(124):         tc = TC()
+ --- modulename: mediator, funcname: __init__
+mediator.py(18):         self._tm = None
+mediator.py(19):         self._bProblem = 0
+mediator.py(125):         tc.setTM(tm)
+ --- modulename: mediator, funcname: setTM
+mediator.py(42):         self._tm = tm
+mediator.py(126):         tm.setTC(tc)
+ --- modulename: mediator, funcname: setTC
+mediator.py(109):         self._tc = tc
+mediator.py(127):         tc.setup()
+ --- modulename: mediator, funcname: setup
+mediator.py(22):         print("Setting up the Test")
+Setting up the Test
+mediator.py(23):         time.sleep(0.1)
+mediator.py(24):         self._tm.prepareReporting()
+ --- modulename: mediator, funcname: prepareReporting
+mediator.py(93):         rvalue = self._db.insert()
+ --- modulename: mediator, funcname: insert
+mediator.py(71):         print("Inserting the execution begin status in the Database")
+Inserting the execution begin status in the Database
+mediator.py(72):         time.sleep(0.1)
+mediator.py(74):         if random.randrange(1, 4) == 3:
+mediator.py(94):         if rvalue == -1:
+mediator.py(128):         tc.execute()
+ --- modulename: mediator, funcname: execute
+mediator.py(27):         if not self._bProblem:
+mediator.py(28):             print("Executing the test")
+Executing the test
+mediator.py(29):             time.sleep(0.1)
+mediator.py(129):         tc.tearDown()
+ --- modulename: mediator, funcname: tearDown
+mediator.py(34):         if not self._bProblem:
+mediator.py(35):             print("Tearing down")
+Tearing down
+mediator.py(36):             time.sleep(0.1)
+mediator.py(37):             self._tm.publishReport()
+ --- modulename: mediator, funcname: publishReport
+mediator.py(105):         self._db.update()
+ --- modulename: mediator, funcname: update
+mediator.py(78):         print("Updating the test results in Database")
+Updating the test results in Database
+mediator.py(79):         time.sleep(0.1)
+mediator.py(106):         self._reporter.report()
+ --- modulename: mediator, funcname: report
+mediator.py(58):         print("Reporting the results of Test")
+Reporting the results of Test
+mediator.py(59):         time.sleep(0.1)
+mediator.py(123):     for i in range(3):
+mediator.py(124):         tc = TC()
+ --- modulename: mediator, funcname: __init__
+mediator.py(18):         self._tm = None
+mediator.py(19):         self._bProblem = 0
+mediator.py(125):         tc.setTM(tm)
+ --- modulename: mediator, funcname: setTM
+mediator.py(42):         self._tm = tm
+mediator.py(126):         tm.setTC(tc)
+ --- modulename: mediator, funcname: setTC
+mediator.py(109):         self._tc = tc
+mediator.py(127):         tc.setup()
+ --- modulename: mediator, funcname: setup
+mediator.py(22):         print("Setting up the Test")
+Setting up the Test
+mediator.py(23):         time.sleep(0.1)
+mediator.py(24):         self._tm.prepareReporting()
+ --- modulename: mediator, funcname: prepareReporting
+mediator.py(93):         rvalue = self._db.insert()
+ --- modulename: mediator, funcname: insert
+mediator.py(71):         print("Inserting the execution begin status in the Database")
+Inserting the execution begin status in the Database
+mediator.py(72):         time.sleep(0.1)
+mediator.py(74):         if random.randrange(1, 4) == 3:
+mediator.py(94):         if rvalue == -1:
+mediator.py(128):         tc.execute()
+ --- modulename: mediator, funcname: execute
+mediator.py(27):         if not self._bProblem:
+mediator.py(28):             print("Executing the test")
+Executing the test
+mediator.py(29):             time.sleep(0.1)
+mediator.py(129):         tc.tearDown()
+ --- modulename: mediator, funcname: tearDown
+mediator.py(34):         if not self._bProblem:
+mediator.py(35):             print("Tearing down")
+Tearing down
+mediator.py(36):             time.sleep(0.1)
+mediator.py(37):             self._tm.publishReport()
+ --- modulename: mediator, funcname: publishReport
+mediator.py(105):         self._db.update()
+ --- modulename: mediator, funcname: update
+mediator.py(78):         print("Updating the test results in Database")
+Updating the test results in Database
+mediator.py(79):         time.sleep(0.1)
+mediator.py(106):         self._reporter.report()
+ --- modulename: mediator, funcname: report
+mediator.py(58):         print("Reporting the results of Test")
+Reporting the results of Test
+mediator.py(59):         time.sleep(0.1)
+mediator.py(123):     for i in range(3):

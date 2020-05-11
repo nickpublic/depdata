@@ -1,0 +1,208 @@
+ --- modulename: observer, funcname: <module>
+observer.py(9): """
+observer.py(11): from __future__ import print_function
+observer.py(14): class Subject(object):
+ --- modulename: observer, funcname: Subject
+observer.py(14): class Subject(object):
+observer.py(16):     def __init__(self):
+observer.py(19):     def attach(self, observer):
+observer.py(23):     def detach(self, observer):
+observer.py(29):     def notify(self, modifier=None):
+observer.py(36): class Data(Subject):
+ --- modulename: observer, funcname: Data
+observer.py(36): class Data(Subject):
+observer.py(38):     def __init__(self, name=''):
+observer.py(43):     @property
+observer.py(47):     @data.setter
+observer.py(53): class HexViewer:
+ --- modulename: observer, funcname: HexViewer
+observer.py(53): class HexViewer:
+observer.py(55):     def update(self, subject):
+observer.py(60): class DecimalViewer:
+ --- modulename: observer, funcname: DecimalViewer
+observer.py(60): class DecimalViewer:
+observer.py(62):     def update(self, subject):
+observer.py(68): def main():
+observer.py(95): if __name__ == '__main__':
+observer.py(96):     main()
+ --- modulename: observer, funcname: main
+observer.py(69):     data1 = Data('Data 1')
+ --- modulename: observer, funcname: __init__
+observer.py(39):         Subject.__init__(self)
+ --- modulename: observer, funcname: __init__
+observer.py(17):         self._observers = []
+observer.py(40):         self.name = name
+observer.py(41):         self._data = 0
+observer.py(70):     data2 = Data('Data 2')
+ --- modulename: observer, funcname: __init__
+observer.py(39):         Subject.__init__(self)
+ --- modulename: observer, funcname: __init__
+observer.py(17):         self._observers = []
+observer.py(40):         self.name = name
+observer.py(41):         self._data = 0
+observer.py(71):     view1 = DecimalViewer()
+observer.py(72):     view2 = HexViewer()
+observer.py(73):     data1.attach(view1)
+ --- modulename: observer, funcname: attach
+observer.py(20):         if observer not in self._observers:
+observer.py(21):             self._observers.append(observer)
+observer.py(74):     data1.attach(view2)
+ --- modulename: observer, funcname: attach
+observer.py(20):         if observer not in self._observers:
+observer.py(21):             self._observers.append(observer)
+observer.py(75):     data2.attach(view2)
+ --- modulename: observer, funcname: attach
+observer.py(20):         if observer not in self._observers:
+observer.py(21):             self._observers.append(observer)
+observer.py(76):     data2.attach(view1)
+ --- modulename: observer, funcname: attach
+observer.py(20):         if observer not in self._observers:
+observer.py(21):             self._observers.append(observer)
+observer.py(78):     print(u"Setting Data 1 = 10")
+Setting Data 1 = 10
+observer.py(79):     data1.data = 10
+ --- modulename: observer, funcname: data
+observer.py(49):         self._data = value
+observer.py(50):         self.notify()
+ --- modulename: observer, funcname: notify
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(63):         print(u'DecimalViewer: Subject %s has data %d' %
+observer.py(64):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+DecimalViewer: Subject Data 1 has data 10
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(56):         print(u'HexViewer: Subject %s has data 0x%x' %
+observer.py(57):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+HexViewer: Subject Data 1 has data 0xa
+observer.py(30):         for observer in self._observers:
+observer.py(80):     print(u"Setting Data 2 = 15")
+Setting Data 2 = 15
+observer.py(81):     data2.data = 15
+ --- modulename: observer, funcname: data
+observer.py(49):         self._data = value
+observer.py(50):         self.notify()
+ --- modulename: observer, funcname: notify
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(56):         print(u'HexViewer: Subject %s has data 0x%x' %
+observer.py(57):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+HexViewer: Subject Data 2 has data 0xf
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(63):         print(u'DecimalViewer: Subject %s has data %d' %
+observer.py(64):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+DecimalViewer: Subject Data 2 has data 15
+observer.py(30):         for observer in self._observers:
+observer.py(82):     print(u"Setting Data 1 = 3")
+Setting Data 1 = 3
+observer.py(83):     data1.data = 3
+ --- modulename: observer, funcname: data
+observer.py(49):         self._data = value
+observer.py(50):         self.notify()
+ --- modulename: observer, funcname: notify
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(63):         print(u'DecimalViewer: Subject %s has data %d' %
+observer.py(64):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+DecimalViewer: Subject Data 1 has data 3
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(56):         print(u'HexViewer: Subject %s has data 0x%x' %
+observer.py(57):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+HexViewer: Subject Data 1 has data 0x3
+observer.py(30):         for observer in self._observers:
+observer.py(84):     print(u"Setting Data 2 = 5")
+Setting Data 2 = 5
+observer.py(85):     data2.data = 5
+ --- modulename: observer, funcname: data
+observer.py(49):         self._data = value
+observer.py(50):         self.notify()
+ --- modulename: observer, funcname: notify
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(56):         print(u'HexViewer: Subject %s has data 0x%x' %
+observer.py(57):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+HexViewer: Subject Data 2 has data 0x5
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(63):         print(u'DecimalViewer: Subject %s has data %d' %
+observer.py(64):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+DecimalViewer: Subject Data 2 has data 5
+observer.py(30):         for observer in self._observers:
+observer.py(86):     print(u"Detach HexViewer from data1 and data2.")
+Detach HexViewer from data1 and data2.
+observer.py(87):     data1.detach(view2)
+ --- modulename: observer, funcname: detach
+observer.py(24):         try:
+observer.py(25):             self._observers.remove(observer)
+observer.py(88):     data2.detach(view2)
+ --- modulename: observer, funcname: detach
+observer.py(24):         try:
+observer.py(25):             self._observers.remove(observer)
+observer.py(89):     print(u"Setting Data 1 = 10")
+Setting Data 1 = 10
+observer.py(90):     data1.data = 10
+ --- modulename: observer, funcname: data
+observer.py(49):         self._data = value
+observer.py(50):         self.notify()
+ --- modulename: observer, funcname: notify
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(63):         print(u'DecimalViewer: Subject %s has data %d' %
+observer.py(64):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+DecimalViewer: Subject Data 1 has data 10
+observer.py(30):         for observer in self._observers:
+observer.py(91):     print(u"Setting Data 2 = 15")
+Setting Data 2 = 15
+observer.py(92):     data2.data = 15
+ --- modulename: observer, funcname: data
+observer.py(49):         self._data = value
+observer.py(50):         self.notify()
+ --- modulename: observer, funcname: notify
+observer.py(30):         for observer in self._observers:
+observer.py(31):             if modifier != observer:
+observer.py(32):                 observer.update(self)
+ --- modulename: observer, funcname: update
+observer.py(63):         print(u'DecimalViewer: Subject %s has data %d' %
+observer.py(64):               (subject.name, subject.data))
+ --- modulename: observer, funcname: data
+observer.py(45):         return self._data
+DecimalViewer: Subject Data 2 has data 15
+observer.py(30):         for observer in self._observers:

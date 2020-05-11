@@ -1,0 +1,18 @@
+ --- modulename: setter_injection, funcname: <module>
+setter_injection.py(3): import datetime
+setter_injection.py(25): class TimeDisplay(object):
+ --- modulename: setter_injection, funcname: TimeDisplay
+setter_injection.py(25): class TimeDisplay(object):
+setter_injection.py(27):     def __init__(self):
+setter_injection.py(30):     def set_time_provider(self, time_provider):
+setter_injection.py(33):     def get_current_time_as_html_fragment(self):
+setter_injection.py(39): class ProductionCodeTimeProvider(object):
+ --- modulename: setter_injection, funcname: ProductionCodeTimeProvider
+setter_injection.py(39): class ProductionCodeTimeProvider(object):
+setter_injection.py(43):     """
+setter_injection.py(45):     def now(self):
+setter_injection.py(52): class MidnightTimeProvider(object):
+ --- modulename: setter_injection, funcname: MidnightTimeProvider
+setter_injection.py(52): class MidnightTimeProvider(object):
+setter_injection.py(55):     """
+setter_injection.py(57):     def now(self):

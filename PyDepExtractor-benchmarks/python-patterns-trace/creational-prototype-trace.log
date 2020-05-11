@@ -1,0 +1,55 @@
+ --- modulename: prototype, funcname: <module>
+prototype.py(25): """
+prototype.py(28): class Prototype(object):
+ --- modulename: prototype, funcname: Prototype
+prototype.py(28): class Prototype(object):
+prototype.py(30):     value = 'default'
+prototype.py(32):     def clone(self, **attrs):
+prototype.py(40): class PrototypeDispatcher(object):
+ --- modulename: prototype, funcname: PrototypeDispatcher
+prototype.py(40): class PrototypeDispatcher(object):
+prototype.py(42):     def __init__(self):
+prototype.py(45):     def get_objects(self):
+prototype.py(49):     def register_object(self, name, obj):
+prototype.py(53):     def unregister_object(self, name):
+prototype.py(58): def main():
+prototype.py(71): if __name__ == '__main__':
+prototype.py(72):     main()
+ --- modulename: prototype, funcname: main
+prototype.py(59):     dispatcher = PrototypeDispatcher()
+ --- modulename: prototype, funcname: __init__
+prototype.py(43):         self._objects = {}
+prototype.py(60):     prototype = Prototype()
+prototype.py(62):     d = prototype.clone()
+ --- modulename: prototype, funcname: clone
+prototype.py(35):         obj = self.__class__()
+prototype.py(36):         obj.__dict__.update(attrs)
+prototype.py(37):         return obj
+prototype.py(63):     a = prototype.clone(value='a-value', category='a')
+ --- modulename: prototype, funcname: clone
+prototype.py(35):         obj = self.__class__()
+prototype.py(36):         obj.__dict__.update(attrs)
+prototype.py(37):         return obj
+prototype.py(64):     b = prototype.clone(value='b-value', is_checked=True)
+ --- modulename: prototype, funcname: clone
+prototype.py(35):         obj = self.__class__()
+prototype.py(36):         obj.__dict__.update(attrs)
+prototype.py(37):         return obj
+prototype.py(65):     dispatcher.register_object('objecta', a)
+ --- modulename: prototype, funcname: register_object
+prototype.py(51):         self._objects[name] = obj
+prototype.py(66):     dispatcher.register_object('objectb', b)
+ --- modulename: prototype, funcname: register_object
+prototype.py(51):         self._objects[name] = obj
+prototype.py(67):     dispatcher.register_object('default', d)
+ --- modulename: prototype, funcname: register_object
+prototype.py(51):         self._objects[name] = obj
+prototype.py(68):     print([{n: p.value} for n, p in dispatcher.get_objects().items()])
+ --- modulename: prototype, funcname: get_objects
+prototype.py(47):         return self._objects
+ --- modulename: prototype, funcname: <listcomp>
+prototype.py(68):     print([{n: p.value} for n, p in dispatcher.get_objects().items()])
+prototype.py(68):     print([{n: p.value} for n, p in dispatcher.get_objects().items()])
+prototype.py(68):     print([{n: p.value} for n, p in dispatcher.get_objects().items()])
+prototype.py(68):     print([{n: p.value} for n, p in dispatcher.get_objects().items()])
+[{'objecta': 'a-value'}, {'objectb': 'b-value'}, {'default': 'default'}]
