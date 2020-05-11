@@ -1,0 +1,86 @@
+ --- modulename: front_controller, funcname: <module>
+front_controller.py(9): """
+front_controller.py(11): class MobileView(object):
+ --- modulename: front_controller, funcname: MobileView
+front_controller.py(11): class MobileView(object):
+front_controller.py(13):     def show_index_page(self):
+front_controller.py(17): class TabletView(object):
+ --- modulename: front_controller, funcname: TabletView
+front_controller.py(17): class TabletView(object):
+front_controller.py(19):     def show_index_page(self):
+front_controller.py(23): class Dispatcher(object):
+ --- modulename: front_controller, funcname: Dispatcher
+front_controller.py(23): class Dispatcher(object):
+front_controller.py(25):     def __init__(self):
+front_controller.py(29):     def dispatch(self, request):
+front_controller.py(38): class RequestController(object):
+ --- modulename: front_controller, funcname: RequestController
+front_controller.py(38): class RequestController(object):
+front_controller.py(39):     """ front controller """
+front_controller.py(41):     def __init__(self):
+front_controller.py(44):     def dispatch_request(self, request):
+front_controller.py(51): class Request(object):
+ --- modulename: front_controller, funcname: Request
+front_controller.py(51): class Request(object):
+front_controller.py(52):     """ request """
+front_controller.py(54):     mobile_type = 'mobile'
+front_controller.py(55):     tablet_type = 'tablet'
+front_controller.py(57):     def __init__(self, request):
+front_controller.py(66): if __name__ == '__main__':
+front_controller.py(67):     front_controller = RequestController()
+ --- modulename: front_controller, funcname: __init__
+front_controller.py(42):         self.dispatcher = Dispatcher()
+ --- modulename: front_controller, funcname: __init__
+front_controller.py(26):         self.mobile_view = MobileView()
+front_controller.py(27):         self.tablet_view = TabletView()
+front_controller.py(68):     front_controller.dispatch_request(Request('mobile'))
+ --- modulename: front_controller, funcname: __init__
+front_controller.py(58):         self.type = None
+front_controller.py(59):         request = request.lower()
+front_controller.py(60):         if request == self.mobile_type:
+front_controller.py(61):             self.type = self.mobile_type
+ --- modulename: front_controller, funcname: dispatch_request
+front_controller.py(45):         if isinstance(request, Request):
+front_controller.py(46):             self.dispatcher.dispatch(request)
+ --- modulename: front_controller, funcname: dispatch
+front_controller.py(30):         if request.type == Request.mobile_type:
+front_controller.py(31):             self.mobile_view.show_index_page()
+ --- modulename: front_controller, funcname: show_index_page
+front_controller.py(14):         print('Displaying mobile index page')
+Displaying mobile index page
+front_controller.py(69):     front_controller.dispatch_request(Request('tablet'))
+ --- modulename: front_controller, funcname: __init__
+front_controller.py(58):         self.type = None
+front_controller.py(59):         request = request.lower()
+front_controller.py(60):         if request == self.mobile_type:
+front_controller.py(62):         elif request == self.tablet_type:
+front_controller.py(63):             self.type = self.tablet_type
+ --- modulename: front_controller, funcname: dispatch_request
+front_controller.py(45):         if isinstance(request, Request):
+front_controller.py(46):             self.dispatcher.dispatch(request)
+ --- modulename: front_controller, funcname: dispatch
+front_controller.py(30):         if request.type == Request.mobile_type:
+front_controller.py(32):         elif request.type == Request.tablet_type:
+front_controller.py(33):             self.tablet_view.show_index_page()
+ --- modulename: front_controller, funcname: show_index_page
+front_controller.py(20):         print('Displaying tablet index page')
+Displaying tablet index page
+front_controller.py(71):     front_controller.dispatch_request(Request('desktop'))
+ --- modulename: front_controller, funcname: __init__
+front_controller.py(58):         self.type = None
+front_controller.py(59):         request = request.lower()
+front_controller.py(60):         if request == self.mobile_type:
+front_controller.py(62):         elif request == self.tablet_type:
+ --- modulename: front_controller, funcname: dispatch_request
+front_controller.py(45):         if isinstance(request, Request):
+front_controller.py(46):             self.dispatcher.dispatch(request)
+ --- modulename: front_controller, funcname: dispatch
+front_controller.py(30):         if request.type == Request.mobile_type:
+front_controller.py(32):         elif request.type == Request.tablet_type:
+front_controller.py(35):             print('cant dispatch the request')
+cant dispatch the request
+front_controller.py(72):     front_controller.dispatch_request('mobile')
+ --- modulename: front_controller, funcname: dispatch_request
+front_controller.py(45):         if isinstance(request, Request):
+front_controller.py(48):             print('request must be a Request object')
+request must be a Request object

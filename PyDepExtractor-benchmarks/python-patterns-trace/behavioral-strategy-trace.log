@@ -1,0 +1,39 @@
+ --- modulename: strategy, funcname: <module>
+strategy.py(34): """
+strategy.py(36): import types
+strategy.py(39): class StrategyExample:
+ --- modulename: strategy, funcname: StrategyExample
+strategy.py(39): class StrategyExample:
+strategy.py(41):     def __init__(self, func=None):
+strategy.py(46):     def execute(self):
+strategy.py(50): def execute_replacement1(self):
+strategy.py(54): def execute_replacement2(self):
+strategy.py(58): if __name__ == '__main__':
+strategy.py(59):     strat0 = StrategyExample()
+ --- modulename: strategy, funcname: __init__
+strategy.py(42):         self.name = 'Strategy Example 0'
+strategy.py(43):         if func is not None:
+strategy.py(61):     strat1 = StrategyExample(execute_replacement1)
+ --- modulename: strategy, funcname: __init__
+strategy.py(42):         self.name = 'Strategy Example 0'
+strategy.py(43):         if func is not None:
+strategy.py(44):             self.execute = types.MethodType(func, self)
+strategy.py(62):     strat1.name = 'Strategy Example 1'
+strategy.py(64):     strat2 = StrategyExample(execute_replacement2)
+ --- modulename: strategy, funcname: __init__
+strategy.py(42):         self.name = 'Strategy Example 0'
+strategy.py(43):         if func is not None:
+strategy.py(44):             self.execute = types.MethodType(func, self)
+strategy.py(65):     strat2.name = 'Strategy Example 2'
+strategy.py(67):     strat0.execute()
+ --- modulename: strategy, funcname: execute
+strategy.py(47):         print(self.name)
+Strategy Example 0
+strategy.py(68):     strat1.execute()
+ --- modulename: strategy, funcname: execute_replacement1
+strategy.py(51):     print(self.name + ' from execute 1')
+Strategy Example 1 from execute 1
+strategy.py(69):     strat2.execute()
+ --- modulename: strategy, funcname: execute_replacement2
+strategy.py(55):     print(self.name + ' from execute 2')
+Strategy Example 2 from execute 2

@@ -1,0 +1,250 @@
+ --- modulename: blackboard, funcname: <module>
+blackboard.py(13): """
+blackboard.py(15): import abc
+blackboard.py(16): import random
+blackboard.py(19): class Blackboard(object):
+ --- modulename: blackboard, funcname: Blackboard
+blackboard.py(19): class Blackboard(object):
+blackboard.py(21):     def __init__(self):
+blackboard.py(30):     def add_expert(self, expert):
+blackboard.py(34): class Controller(object):
+ --- modulename: blackboard, funcname: Controller
+blackboard.py(34): class Controller(object):
+blackboard.py(36):     def __init__(self, blackboard):
+blackboard.py(39):     def run_loop(self):
+blackboard.py(47): class AbstractExpert(object):
+ --- modulename: blackboard, funcname: AbstractExpert
+blackboard.py(47): class AbstractExpert(object):
+blackboard.py(49):     __metaclass__ = abc.ABCMeta
+blackboard.py(51):     def __init__(self, blackboard):
+blackboard.py(54):     @abc.abstractproperty
+blackboard.py(58):     @abc.abstractmethod
+blackboard.py(63): class Student(AbstractExpert):
+ --- modulename: blackboard, funcname: Student
+blackboard.py(63): class Student(AbstractExpert):
+blackboard.py(65):     @property
+blackboard.py(69):     def contribute(self):
+blackboard.py(76): class Scientist(AbstractExpert):
+ --- modulename: blackboard, funcname: Scientist
+blackboard.py(76): class Scientist(AbstractExpert):
+blackboard.py(78):     @property
+blackboard.py(82):     def contribute(self):
+blackboard.py(89): class Professor(AbstractExpert):
+ --- modulename: blackboard, funcname: Professor
+blackboard.py(89): class Professor(AbstractExpert):
+blackboard.py(91):     @property
+blackboard.py(95):     def contribute(self):
+blackboard.py(102): if __name__ == '__main__':
+blackboard.py(103):     blackboard = Blackboard()
+ --- modulename: blackboard, funcname: __init__
+blackboard.py(22):         self.experts = []
+blackboard.py(24):             'problems': 0,
+blackboard.py(25):             'suggestions': 0,
+blackboard.py(26):             'contributions': [],
+blackboard.py(27):             'progress': 0   # percentage, if 100 -> task is finished
+blackboard.py(105):     blackboard.add_expert(Student(blackboard))
+ --- modulename: blackboard, funcname: __init__
+blackboard.py(52):         self.blackboard = blackboard
+ --- modulename: blackboard, funcname: add_expert
+blackboard.py(31):         self.experts.append(expert)
+blackboard.py(106):     blackboard.add_expert(Scientist(blackboard))
+ --- modulename: blackboard, funcname: __init__
+blackboard.py(52):         self.blackboard = blackboard
+ --- modulename: blackboard, funcname: add_expert
+blackboard.py(31):         self.experts.append(expert)
+blackboard.py(107):     blackboard.add_expert(Professor(blackboard))
+ --- modulename: blackboard, funcname: __init__
+blackboard.py(52):         self.blackboard = blackboard
+ --- modulename: blackboard, funcname: add_expert
+blackboard.py(31):         self.experts.append(expert)
+blackboard.py(109):     c = Controller(blackboard)
+ --- modulename: blackboard, funcname: __init__
+blackboard.py(37):         self.blackboard = blackboard
+blackboard.py(110):     contributions = c.run_loop()
+ --- modulename: blackboard, funcname: run_loop
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(83):         self.blackboard.common_state['problems'] += random.randint(10, 20)
+blackboard.py(84):         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
+blackboard.py(85):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(86):         self.blackboard.common_state['progress'] += random.randint(10, 30)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(83):         self.blackboard.common_state['problems'] += random.randint(10, 20)
+blackboard.py(84):         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
+blackboard.py(85):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(86):         self.blackboard.common_state['progress'] += random.randint(10, 30)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(83):         self.blackboard.common_state['problems'] += random.randint(10, 20)
+blackboard.py(84):         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
+blackboard.py(85):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(86):         self.blackboard.common_state['progress'] += random.randint(10, 30)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(67):         return True
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(70):         self.blackboard.common_state['problems'] += random.randint(1, 10)
+blackboard.py(71):         self.blackboard.common_state['suggestions'] += random.randint(1, 10)
+blackboard.py(72):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(73):         self.blackboard.common_state['progress'] += random.randint(1, 2)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(80):         return random.randint(0, 1)
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(83):         self.blackboard.common_state['problems'] += random.randint(10, 20)
+blackboard.py(84):         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
+blackboard.py(85):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(86):         self.blackboard.common_state['progress'] += random.randint(10, 30)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(42):                 if expert.is_eager_to_contribute:
+ --- modulename: blackboard, funcname: is_eager_to_contribute
+blackboard.py(93):         return True if self.blackboard.common_state['problems'] > 100 else False
+blackboard.py(43):                     expert.contribute()
+ --- modulename: blackboard, funcname: contribute
+blackboard.py(96):         self.blackboard.common_state['problems'] += random.randint(1, 2)
+blackboard.py(97):         self.blackboard.common_state['suggestions'] += random.randint(10, 20)
+blackboard.py(98):         self.blackboard.common_state['contributions'] += [self.__class__.__name__]
+blackboard.py(99):         self.blackboard.common_state['progress'] += random.randint(10, 100)
+blackboard.py(41):             for expert in self.blackboard.experts:
+blackboard.py(40):         while self.blackboard.common_state['progress'] < 100:
+blackboard.py(44):         return self.blackboard.common_state['contributions']
+blackboard.py(112):     from pprint import pprint
+blackboard.py(113):     pprint(contributions)
+['Student',
+ 'Scientist',
+ 'Student',
+ 'Scientist',
+ 'Student',
+ 'Student',
+ 'Scientist',
+ 'Student',
+ 'Student',
+ 'Student',
+ 'Scientist',
+ 'Professor']

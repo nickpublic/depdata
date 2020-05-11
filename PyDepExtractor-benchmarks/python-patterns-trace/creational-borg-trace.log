@@ -1,0 +1,60 @@
+ --- modulename: borg, funcname: <module>
+borg.py(41): """
+borg.py(44): class Borg(object):
+ --- modulename: borg, funcname: Borg
+borg.py(44): class Borg(object):
+borg.py(45):     __shared_state = {}
+borg.py(47):     def __init__(self):
+borg.py(51):     def __str__(self):
+borg.py(55): class YourBorg(Borg):
+ --- modulename: borg, funcname: YourBorg
+borg.py(55): class YourBorg(Borg):
+borg.py(56):     pass
+borg.py(59): if __name__ == '__main__':
+borg.py(60):     rm1 = Borg()
+ --- modulename: borg, funcname: __init__
+borg.py(48):         self.__dict__ = self.__shared_state
+borg.py(49):         self.state = 'Init'
+borg.py(61):     rm2 = Borg()
+ --- modulename: borg, funcname: __init__
+borg.py(48):         self.__dict__ = self.__shared_state
+borg.py(49):         self.state = 'Init'
+borg.py(63):     rm1.state = 'Idle'
+borg.py(64):     rm2.state = 'Running'
+borg.py(66):     print('rm1: {0}'.format(rm1))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm1: Running
+borg.py(67):     print('rm2: {0}'.format(rm2))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm2: Running
+borg.py(69):     rm2.state = 'Zombie'
+borg.py(71):     print('rm1: {0}'.format(rm1))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm1: Zombie
+borg.py(72):     print('rm2: {0}'.format(rm2))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm2: Zombie
+borg.py(74):     print('rm1 id: {0}'.format(id(rm1)))
+rm1 id: 2408062839944
+borg.py(75):     print('rm2 id: {0}'.format(id(rm2)))
+rm2 id: 2408062840224
+borg.py(77):     rm3 = YourBorg()
+ --- modulename: borg, funcname: __init__
+borg.py(48):         self.__dict__ = self.__shared_state
+borg.py(49):         self.state = 'Init'
+borg.py(79):     print('rm1: {0}'.format(rm1))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm1: Init
+borg.py(80):     print('rm2: {0}'.format(rm2))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm2: Init
+borg.py(81):     print('rm3: {0}'.format(rm3))
+ --- modulename: borg, funcname: __str__
+borg.py(52):         return self.state
+rm3: Init

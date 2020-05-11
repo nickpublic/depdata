@@ -1,0 +1,126 @@
+ --- modulename: flyweight, funcname: <module>
+flyweight.py(25): """
+flyweight.py(27): import weakref
+flyweight.py(30): class FlyweightMeta(type):
+ --- modulename: flyweight, funcname: FlyweightMeta
+flyweight.py(30): class FlyweightMeta(type):
+flyweight.py(32):     def __new__(mcs, name, parents, dct):
+flyweight.py(45):     @staticmethod
+flyweight.py(56):     def __call__(cls, *args, **kwargs):
+flyweight.py(67): class Card(object):
+ --- modulename: flyweight, funcname: Card
+flyweight.py(67): class Card(object):
+flyweight.py(69):     """The object pool. Has builtin reference counting"""
+flyweight.py(70):     _CardPool = weakref.WeakValueDictionary()
+flyweight.py(74):     def __new__(cls, value, suit):
+flyweight.py(85):     def __repr__(self):
+flyweight.py(89): def with_metaclass(meta, *bases):
+flyweight.py(94): class Card2(with_metaclass(FlyweightMeta)):
+ --- modulename: flyweight, funcname: with_metaclass
+flyweight.py(91):     return meta("NewBase", bases, {})
+ --- modulename: flyweight, funcname: __new__
+flyweight.py(42):         dct['pool'] = weakref.WeakValueDictionary()
+flyweight.py(43):         return super(FlyweightMeta, mcs).__new__(mcs, name, parents, dct)
+ --- modulename: flyweight, funcname: Card2
+flyweight.py(94): class Card2(with_metaclass(FlyweightMeta)):
+flyweight.py(96):     def __init__(self, *args, **kwargs):
+ --- modulename: flyweight, funcname: __new__
+flyweight.py(42):         dct['pool'] = weakref.WeakValueDictionary()
+flyweight.py(43):         return super(FlyweightMeta, mcs).__new__(mcs, name, parents, dct)
+flyweight.py(101): if __name__ == '__main__':
+flyweight.py(103):     c1 = Card('9', 'h')
+ --- modulename: flyweight, funcname: __new__
+flyweight.py(75):         obj = Card._CardPool.get(value + suit)
+flyweight.py(76):         if not obj:
+flyweight.py(77):             obj = object.__new__(cls)
+flyweight.py(78):             Card._CardPool[value + suit] = obj
+flyweight.py(79):             obj.value, obj.suit = value, suit
+flyweight.py(80):         return obj
+flyweight.py(104):     c2 = Card('9', 'h')
+ --- modulename: flyweight, funcname: __new__
+flyweight.py(75):         obj = Card._CardPool.get(value + suit)
+flyweight.py(76):         if not obj:
+flyweight.py(80):         return obj
+flyweight.py(105):     print(c1, c2)
+ --- modulename: flyweight, funcname: __repr__
+flyweight.py(86):         return "<Card: %s%s>" % (self.value, self.suit)
+<Card: 9h>  --- modulename: flyweight, funcname: __repr__
+flyweight.py(86):         return "<Card: %s%s>" % (self.value, self.suit)
+<Card: 9h>
+flyweight.py(106):     print(c1 == c2, c1 is c2)
+True True
+flyweight.py(107):     print(id(c1), id(c2))
+2347339183104 2347339183104
+flyweight.py(109):     c1.temp = None
+flyweight.py(110):     c3 = Card('9', 'h')
+ --- modulename: flyweight, funcname: __new__
+flyweight.py(75):         obj = Card._CardPool.get(value + suit)
+flyweight.py(76):         if not obj:
+flyweight.py(80):         return obj
+flyweight.py(111):     print(hasattr(c3, 'temp'))
+True
+flyweight.py(112):     c1 = c2 = c3 = None
+flyweight.py(113):     c3 = Card('9', 'h')
+ --- modulename: flyweight, funcname: __new__
+flyweight.py(75):         obj = Card._CardPool.get(value + suit)
+flyweight.py(76):         if not obj:
+flyweight.py(77):             obj = object.__new__(cls)
+flyweight.py(78):             Card._CardPool[value + suit] = obj
+flyweight.py(79):             obj.value, obj.suit = value, suit
+flyweight.py(80):         return obj
+flyweight.py(114):     print(hasattr(c3, 'temp'))
+False
+flyweight.py(117):     instances_pool = getattr(Card2, 'pool')
+flyweight.py(118):     cm1 = Card2('10', 'h', a=1)
+ --- modulename: flyweight, funcname: __call__
+flyweight.py(57):         key = FlyweightMeta._serialize_params(cls, *args, **kwargs)
+ --- modulename: flyweight, funcname: _serialize_params
+flyweight.py(51):         args_list = list(map(str, args))
+flyweight.py(52):         args_list.extend([str(kwargs), cls.__name__])
+flyweight.py(53):         key = ''.join(args_list)
+flyweight.py(54):         return key
+flyweight.py(58):         pool = getattr(cls, 'pool', {})
+flyweight.py(60):         instance = pool.get(key)
+flyweight.py(61):         if instance is None:
+flyweight.py(62):             instance = super(FlyweightMeta, cls).__call__(*args, **kwargs)
+ --- modulename: flyweight, funcname: __init__
+flyweight.py(98):         pass
+flyweight.py(63):             pool[key] = instance
+flyweight.py(64):         return instance
+flyweight.py(119):     cm2 = Card2('10', 'h', a=1)
+ --- modulename: flyweight, funcname: __call__
+flyweight.py(57):         key = FlyweightMeta._serialize_params(cls, *args, **kwargs)
+ --- modulename: flyweight, funcname: _serialize_params
+flyweight.py(51):         args_list = list(map(str, args))
+flyweight.py(52):         args_list.extend([str(kwargs), cls.__name__])
+flyweight.py(53):         key = ''.join(args_list)
+flyweight.py(54):         return key
+flyweight.py(58):         pool = getattr(cls, 'pool', {})
+flyweight.py(60):         instance = pool.get(key)
+flyweight.py(61):         if instance is None:
+flyweight.py(64):         return instance
+flyweight.py(120):     cm3 = Card2('10', 'h', a=2)
+ --- modulename: flyweight, funcname: __call__
+flyweight.py(57):         key = FlyweightMeta._serialize_params(cls, *args, **kwargs)
+ --- modulename: flyweight, funcname: _serialize_params
+flyweight.py(51):         args_list = list(map(str, args))
+flyweight.py(52):         args_list.extend([str(kwargs), cls.__name__])
+flyweight.py(53):         key = ''.join(args_list)
+flyweight.py(54):         return key
+flyweight.py(58):         pool = getattr(cls, 'pool', {})
+flyweight.py(60):         instance = pool.get(key)
+flyweight.py(61):         if instance is None:
+flyweight.py(62):             instance = super(FlyweightMeta, cls).__call__(*args, **kwargs)
+ --- modulename: flyweight, funcname: __init__
+flyweight.py(98):         pass
+flyweight.py(63):             pool[key] = instance
+flyweight.py(64):         return instance
+flyweight.py(122):     assert (cm1 == cm2) != cm3
+flyweight.py(123):     assert (cm1 is cm2) is not cm3
+flyweight.py(124):     assert len(instances_pool) == 2
+flyweight.py(126):     del cm1
+flyweight.py(127):     assert len(instances_pool) == 2
+flyweight.py(129):     del cm2
+flyweight.py(130):     assert len(instances_pool) == 1
+flyweight.py(132):     del cm3
+flyweight.py(133):     assert len(instances_pool) == 0

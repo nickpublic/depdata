@@ -1,0 +1,53 @@
+ --- modulename: bridge, funcname: <module>
+bridge.py(10): """
+bridge.py(14): class DrawingAPI1(object):
+ --- modulename: bridge, funcname: DrawingAPI1
+bridge.py(14): class DrawingAPI1(object):
+bridge.py(16):     def draw_circle(self, x, y, radius):
+bridge.py(21): class DrawingAPI2(object):
+ --- modulename: bridge, funcname: DrawingAPI2
+bridge.py(21): class DrawingAPI2(object):
+bridge.py(23):     def draw_circle(self, x, y, radius):
+bridge.py(28): class CircleShape(object):
+ --- modulename: bridge, funcname: CircleShape
+bridge.py(28): class CircleShape(object):
+bridge.py(30):     def __init__(self, x, y, radius, drawing_api):
+bridge.py(37):     def draw(self):
+bridge.py(41):     def scale(self, pct):
+bridge.py(45): def main():
+bridge.py(56): if __name__ == '__main__':
+bridge.py(57):     main()
+ --- modulename: bridge, funcname: main
+bridge.py(47):         CircleShape(1, 2, 3, DrawingAPI1()),
+ --- modulename: bridge, funcname: __init__
+bridge.py(31):         self._x = x
+bridge.py(32):         self._y = y
+bridge.py(33):         self._radius = radius
+bridge.py(34):         self._drawing_api = drawing_api
+bridge.py(48):         CircleShape(5, 7, 11, DrawingAPI2())
+ --- modulename: bridge, funcname: __init__
+bridge.py(31):         self._x = x
+bridge.py(32):         self._y = y
+bridge.py(33):         self._radius = radius
+bridge.py(34):         self._drawing_api = drawing_api
+bridge.py(51):     for shape in shapes:
+bridge.py(52):         shape.scale(2.5)
+ --- modulename: bridge, funcname: scale
+bridge.py(42):         self._radius *= pct
+bridge.py(53):         shape.draw()
+ --- modulename: bridge, funcname: draw
+bridge.py(38):         self._drawing_api.draw_circle(self._x, self._y, self._radius)
+ --- modulename: bridge, funcname: draw_circle
+bridge.py(17):         print('API1.circle at {}:{} radius {}'.format(x, y, radius))
+API1.circle at 1:2 radius 7.5
+bridge.py(51):     for shape in shapes:
+bridge.py(52):         shape.scale(2.5)
+ --- modulename: bridge, funcname: scale
+bridge.py(42):         self._radius *= pct
+bridge.py(53):         shape.draw()
+ --- modulename: bridge, funcname: draw
+bridge.py(38):         self._drawing_api.draw_circle(self._x, self._y, self._radius)
+ --- modulename: bridge, funcname: draw_circle
+bridge.py(24):         print('API2.circle at {}:{} radius {}'.format(x, y, radius))
+API2.circle at 5:7 radius 27.5
+bridge.py(51):     for shape in shapes:

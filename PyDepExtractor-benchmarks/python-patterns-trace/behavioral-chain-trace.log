@@ -1,0 +1,388 @@
+ --- modulename: chain, funcname: <module>
+chain.py(21): """
+chain.py(23): from contextlib import contextmanager
+chain.py(24): import os
+chain.py(25): import sys
+chain.py(26): import time
+chain.py(27): import abc
+chain.py(30): class Handler(object):
+ --- modulename: chain, funcname: Handler
+chain.py(30): class Handler(object):
+chain.py(31):     __metaclass__ = abc.ABCMeta
+chain.py(33):     def __init__(self, successor=None):
+chain.py(36):     def handle(self, request):
+chain.py(41):     @abc.abstractmethod
+chain.py(46): class ConcreteHandler1(Handler):
+ --- modulename: chain, funcname: ConcreteHandler1
+chain.py(46): class ConcreteHandler1(Handler):
+chain.py(48):     def _handle(self, request):
+chain.py(54): class ConcreteHandler2(Handler):
+ --- modulename: chain, funcname: ConcreteHandler2
+chain.py(54): class ConcreteHandler2(Handler):
+chain.py(56):     def _handle(self, request):
+chain.py(62): class ConcreteHandler3(Handler):
+ --- modulename: chain, funcname: ConcreteHandler3
+chain.py(62): class ConcreteHandler3(Handler):
+chain.py(64):     def _handle(self, request):
+chain.py(70): class DefaultHandler(Handler):
+ --- modulename: chain, funcname: DefaultHandler
+chain.py(70): class DefaultHandler(Handler):
+chain.py(72):     def _handle(self, request):
+chain.py(77): class Client(object):
+ --- modulename: chain, funcname: Client
+chain.py(77): class Client(object):
+chain.py(79):     def __init__(self):
+chain.py(83):     def delegate(self, requests):
+chain.py(88): def coroutine(func):
+chain.py(96): @coroutine
+ --- modulename: chain, funcname: coroutine
+chain.py(89):     def start(*args, **kwargs):
+chain.py(93):     return start
+chain.py(106): @coroutine
+ --- modulename: chain, funcname: coroutine
+chain.py(89):     def start(*args, **kwargs):
+chain.py(93):     return start
+chain.py(116): @coroutine
+ --- modulename: chain, funcname: coroutine
+chain.py(89):     def start(*args, **kwargs):
+chain.py(93):     return start
+chain.py(126): @coroutine
+ --- modulename: chain, funcname: coroutine
+chain.py(89):     def start(*args, **kwargs):
+chain.py(93):     return start
+chain.py(133): class ClientCoroutine:
+ --- modulename: chain, funcname: ClientCoroutine
+chain.py(133): class ClientCoroutine:
+chain.py(135):     def __init__(self):
+chain.py(138):     def delegate(self, requests):
+chain.py(143): def timeit(func):
+chain.py(153): @contextmanager
+chain.py(162): if __name__ == "__main__":
+chain.py(163):     client1 = Client()
+ --- modulename: chain, funcname: __init__
+chain.py(80):         self.handler = ConcreteHandler1(
+chain.py(81):             ConcreteHandler3(ConcreteHandler2(DefaultHandler())))
+ --- modulename: chain, funcname: __init__
+chain.py(34):         self._successor = successor
+ --- modulename: chain, funcname: __init__
+chain.py(34):         self._successor = successor
+ --- modulename: chain, funcname: __init__
+chain.py(34):         self._successor = successor
+ --- modulename: chain, funcname: __init__
+chain.py(34):         self._successor = successor
+chain.py(164):     client2 = ClientCoroutine()
+ --- modulename: chain, funcname: __init__
+chain.py(136):         self.target = coroutine1(coroutine3(coroutine2(default_coroutine())))
+ --- modulename: chain, funcname: start
+chain.py(90):         cr = func(*args, **kwargs)
+chain.py(91):         next(cr)
+ --- modulename: chain, funcname: default_coroutine
+chain.py(128):     while True:
+chain.py(129):         request = yield
+chain.py(92):         return cr
+ --- modulename: chain, funcname: start
+chain.py(90):         cr = func(*args, **kwargs)
+chain.py(91):         next(cr)
+ --- modulename: chain, funcname: coroutine2
+chain.py(108):     while True:
+chain.py(109):         request = yield
+chain.py(92):         return cr
+ --- modulename: chain, funcname: start
+chain.py(90):         cr = func(*args, **kwargs)
+chain.py(91):         next(cr)
+ --- modulename: chain, funcname: coroutine3
+chain.py(118):     while True:
+chain.py(119):         request = yield
+chain.py(92):         return cr
+ --- modulename: chain, funcname: start
+chain.py(90):         cr = func(*args, **kwargs)
+chain.py(91):         next(cr)
+ --- modulename: chain, funcname: coroutine1
+chain.py(98):     while True:
+chain.py(99):         request = yield
+chain.py(92):         return cr
+chain.py(165):     requests = [2, 5, 14, 22, 18, 3, 35, 27, 20]
+chain.py(167):     client1.delegate(requests)
+ --- modulename: chain, funcname: delegate
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(50):             print('request {} handled in handler 1'.format(request))
+request 2 handled in handler 1
+chain.py(51):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(50):             print('request {} handled in handler 1'.format(request))
+request 5 handled in handler 1
+chain.py(51):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(65):         if 20 < request <= 30:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(57):         if 10 < request <= 20:
+chain.py(58):             print('request {} handled in handler 2'.format(request))
+request 14 handled in handler 2
+chain.py(59):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(65):         if 20 < request <= 30:
+chain.py(66):             print('request {} handled in handler 3'.format(request))
+request 22 handled in handler 3
+chain.py(67):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(65):         if 20 < request <= 30:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(57):         if 10 < request <= 20:
+chain.py(58):             print('request {} handled in handler 2'.format(request))
+request 18 handled in handler 2
+chain.py(59):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(50):             print('request {} handled in handler 1'.format(request))
+request 3 handled in handler 1
+chain.py(51):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(65):         if 20 < request <= 30:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(57):         if 10 < request <= 20:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(73):         print('end of chain, no handler for {}'.format(request))
+end of chain, no handler for 35
+chain.py(74):         return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(65):         if 20 < request <= 30:
+chain.py(66):             print('request {} handled in handler 3'.format(request))
+request 27 handled in handler 3
+chain.py(67):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(85):             self.handler.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(49):         if 0 < request <= 10:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(65):         if 20 < request <= 30:
+chain.py(38):         if not res:
+chain.py(39):             self._successor.handle(request)
+ --- modulename: chain, funcname: handle
+chain.py(37):         res = self._handle(request)
+ --- modulename: chain, funcname: _handle
+chain.py(57):         if 10 < request <= 20:
+chain.py(58):             print('request {} handled in handler 2'.format(request))
+request 20 handled in handler 2
+chain.py(59):             return True
+chain.py(38):         if not res:
+chain.py(84):         for request in requests:
+chain.py(168):     print('-' * 30)
+------------------------------
+chain.py(169):     client2.delegate(requests)
+ --- modulename: chain, funcname: delegate
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(101):             print('request {} handled in coroutine 1'.format(request))
+request 2 handled in coroutine 1
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(101):             print('request {} handled in coroutine 1'.format(request))
+request 5 handled in coroutine 1
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(103):             target.send(request)
+ --- modulename: chain, funcname: coroutine3
+chain.py(120):         if 20 < request <= 30:
+chain.py(123):             target.send(request)
+ --- modulename: chain, funcname: coroutine2
+chain.py(110):         if 10 < request <= 20:
+chain.py(111):             print('request {} handled in coroutine 2'.format(request))
+request 14 handled in coroutine 2
+chain.py(109):         request = yield
+chain.py(119):         request = yield
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(103):             target.send(request)
+ --- modulename: chain, funcname: coroutine3
+chain.py(120):         if 20 < request <= 30:
+chain.py(121):             print('request {} handled in coroutine 3'.format(request))
+request 22 handled in coroutine 3
+chain.py(119):         request = yield
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(103):             target.send(request)
+ --- modulename: chain, funcname: coroutine3
+chain.py(120):         if 20 < request <= 30:
+chain.py(123):             target.send(request)
+ --- modulename: chain, funcname: coroutine2
+chain.py(110):         if 10 < request <= 20:
+chain.py(111):             print('request {} handled in coroutine 2'.format(request))
+request 18 handled in coroutine 2
+chain.py(109):         request = yield
+chain.py(119):         request = yield
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(101):             print('request {} handled in coroutine 1'.format(request))
+request 3 handled in coroutine 1
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(103):             target.send(request)
+ --- modulename: chain, funcname: coroutine3
+chain.py(120):         if 20 < request <= 30:
+chain.py(123):             target.send(request)
+ --- modulename: chain, funcname: coroutine2
+chain.py(110):         if 10 < request <= 20:
+chain.py(113):             target.send(request)
+ --- modulename: chain, funcname: default_coroutine
+chain.py(130):         print('end of chain, no coroutine for {}'.format(request))
+end of chain, no coroutine for 35
+chain.py(129):         request = yield
+chain.py(109):         request = yield
+chain.py(119):         request = yield
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(103):             target.send(request)
+ --- modulename: chain, funcname: coroutine3
+chain.py(120):         if 20 < request <= 30:
+chain.py(121):             print('request {} handled in coroutine 3'.format(request))
+request 27 handled in coroutine 3
+chain.py(119):         request = yield
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(140):             self.target.send(request)
+ --- modulename: chain, funcname: coroutine1
+chain.py(100):         if 0 < request <= 10:
+chain.py(103):             target.send(request)
+ --- modulename: chain, funcname: coroutine3
+chain.py(120):         if 20 < request <= 30:
+chain.py(123):             target.send(request)
+ --- modulename: chain, funcname: coroutine2
+chain.py(110):         if 10 < request <= 20:
+chain.py(111):             print('request {} handled in coroutine 2'.format(request))
+request 20 handled in coroutine 2
+chain.py(109):         request = yield
+chain.py(119):         request = yield
+chain.py(99):         request = yield
+chain.py(139):         for request in requests:
+chain.py(171):     requests *= 10000
+chain.py(172):     client1_delegate = timeit(client1.delegate)
+ --- modulename: chain, funcname: timeit
+chain.py(145):     def count(*args, **kwargs):
+chain.py(150):     return count
+chain.py(173):     client2_delegate = timeit(client2.delegate)
+ --- modulename: chain, funcname: timeit
+chain.py(145):     def count(*args, **kwargs):
+chain.py(150):     return count
+chain.py(174):     with suppress_stdout():
+ --- modulename: chain, funcname: suppress_stdout
+chain.py(155):     try:
+chain.py(156):         stdout, sys.stdout = sys.stdout, open(os.devnull, 'w')
+chain.py(178):     print(client1_delegate._time, client2_delegate._time)
+17.432048082351685 11.896652460098267

@@ -1,0 +1,66 @@
+ --- modulename: command, funcname: <module>
+command.py(7): """
+command.py(9): from __future__ import print_function
+command.py(10): import os
+command.py(11): from os.path import lexists
+command.py(14): class MoveFileCommand(object):
+ --- modulename: command, funcname: MoveFileCommand
+command.py(14): class MoveFileCommand(object):
+command.py(16):     def __init__(self, src, dest):
+command.py(20):     def execute(self):
+command.py(23):     def undo(self):
+command.py(26):     def rename(self, src, dest):
+command.py(31): def main():
+command.py(56): if __name__ == "__main__":
+command.py(57):     main()
+ --- modulename: command, funcname: main
+command.py(32):     command_stack = []
+command.py(35):     command_stack.append(MoveFileCommand('foo.txt', 'bar.txt'))
+ --- modulename: command, funcname: __init__
+command.py(17):         self.src = src
+command.py(18):         self.dest = dest
+command.py(36):     command_stack.append(MoveFileCommand('bar.txt', 'baz.txt'))
+ --- modulename: command, funcname: __init__
+command.py(17):         self.src = src
+command.py(18):         self.dest = dest
+command.py(39):     assert(not lexists("foo.txt"))
+command.py(40):     assert(not lexists("bar.txt"))
+command.py(41):     assert(not lexists("baz.txt"))
+command.py(42):     try:
+command.py(43):         with open("foo.txt", "w"):  # Creating the file
+command.py(44):             pass
+command.py(47):         for cmd in command_stack:
+command.py(48):             cmd.execute()
+ --- modulename: command, funcname: execute
+command.py(21):         self.rename(self.src, self.dest)
+ --- modulename: command, funcname: rename
+command.py(27):         print(u"renaming %s to %s" % (src, dest))
+renaming foo.txt to bar.txt
+command.py(28):         os.rename(src, dest)
+command.py(47):         for cmd in command_stack:
+command.py(48):             cmd.execute()
+ --- modulename: command, funcname: execute
+command.py(21):         self.rename(self.src, self.dest)
+ --- modulename: command, funcname: rename
+command.py(27):         print(u"renaming %s to %s" % (src, dest))
+renaming bar.txt to baz.txt
+command.py(28):         os.rename(src, dest)
+command.py(47):         for cmd in command_stack:
+command.py(51):         for cmd in reversed(command_stack):
+command.py(52):             cmd.undo()
+ --- modulename: command, funcname: undo
+command.py(24):         self.rename(self.dest, self.src)
+ --- modulename: command, funcname: rename
+command.py(27):         print(u"renaming %s to %s" % (src, dest))
+renaming baz.txt to bar.txt
+command.py(28):         os.rename(src, dest)
+command.py(51):         for cmd in reversed(command_stack):
+command.py(52):             cmd.undo()
+ --- modulename: command, funcname: undo
+command.py(24):         self.rename(self.dest, self.src)
+ --- modulename: command, funcname: rename
+command.py(27):         print(u"renaming %s to %s" % (src, dest))
+renaming bar.txt to foo.txt
+command.py(28):         os.rename(src, dest)
+command.py(51):         for cmd in reversed(command_stack):
+command.py(54):         os.unlink("foo.txt")
