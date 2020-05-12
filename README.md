@@ -20,24 +20,24 @@ It stores the dependencies extracted by PyDepExtractor, that we call **possible 
 
 In particular,  $projectname$_dep_P11.json file stores the $P_{i>10}$ possible dependencies among files. 
 
-3) **$projectname$_gitlog.txt** and **$projectname$_history.csv** store the revision history collected from git.
+3)**$projectname$_gitlog.txt** and **$projectname$_history.csv** store the revision history collected from git.
 
 
 
 ## 2. 105-project-analysis-summary
 This directory include the analysis data of co-change capturing results, maintenance scores by DL and PC, dependency structure comparison, sub-space comparison, maintenance-groundtruth.
 
-**python-projects-105.csv** lists the basic information of the projects that we investigated.
+1)**python-projects-105.csv** lists the basic information of the projects that we investigated.
 
 
-**dependency_structure_mojofm.csv** lists the similarity between dependency structures created by D_e \union D_p1 and D_e only.
+2)**dependency_structure_mojofm.csv** lists the similarity between dependency structures created by D_e \union D_p1 and D_e only.
 
 
-**cochange-capturing.csv** lists the  precison, recall, etc. measurements against 20 co-change benchmarks.
+3)**cochange-capturing.csv** lists the  precison, recall, etc. measurements against 20 co-change benchmarks.
 
-**The files whose name start with subspace-** lists the detail and summarized data related to sub-spaces extracted by DRSpace technique. 
+4)**The files whose name start with subspace-** lists the detail and summarized data related to sub-spaces extracted by DRSpace technique. 
 
-**DL_PC.xlxs** and **maintenance** list the dependency-based DL and PC maintenance scores, maintenance effors measured by six metrics mined from revision history.
+5)**DL_PC.xlxs** and **maintenance** list the dependency-based DL and PC maintenance scores, maintenance effors measured by six metrics mined from revision history.
 
 ## 3. PyDepExtractor-benchmarks
 It includes the execution traces collected from 4 projects. See the four folders under this directory.
