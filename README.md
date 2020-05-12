@@ -1,13 +1,12 @@
 # depdata
 This repository stores the data of 105 Python projects.
 
-We publish our collected data, aiming to provide a benchmark for exploring architecture impact of possible dependencies in Python.
+We provided the benchmarks collected from 105 open source projects for continued research of possible dependencies due to dynamic typing in Python software
 
-## 1. Projects' information
-**python-projects-105.csv** lists the basic information of the projects that we investigated.
 
-## 2. The dependencies extracted from source code for each project
-One folder corresponds to one project, and the folder's name is same with the project's name.
+## 1. 105-project-data
+
+The 105 folders under this directory correspond to the dependency file and history data of 105 projects.
 
 Under each folder,
 
@@ -17,11 +16,31 @@ It stores the file-level dependencies extracted by Understand tool, that we call
 
 2)**$projectname$_dep_P$i$.json** (i=1,2,...,10) 
 
-It stores the file-level dependencies extracted by our approach, that we call **possible dependencies**.
+It stores the dependencies extracted by PyDepExtractor, that we call **possible dependencies**.
 
-In particular,  $projectname$_dep_P11.json file stores the $P_{i>10}$ possible dependencies. 
+In particular,  $projectname$_dep_P11.json file stores the $P_{i>10}$ possible dependencies among files. 
 
-## 3. The revision history collected from git for each project
+3) **$projectname$_gitlog.txt** and **$projectname$_history.csv** store the revision history collected from git.
 
-Under each project folder,
-**$projectname$_gitlog.txt** and **$projectname$_history.csv** store the revision history collected from git.
+
+
+## 2. 105-project-analysis-summary
+This directory include the analysis data of co-change capturing results, maintenance scores by DL and PC, dependency structure comparison, sub-space comparison, maintenance-groundtruth.
+
+**python-projects-105.csv** lists the basic information of the projects that we investigated.
+
+
+**dependency_structure_mojofm.csv** lists the similarity between dependency structures created by D_e \union D_p1 and D_e only.
+
+
+**cochange-capturing.csv** lists the  precison, recall, etc. measurements against 20 co-change benchmarks.
+
+**The files whose name start with subspace-** lists the detail and summarized data related to sub-spaces extracted by DRSpace technique. 
+
+** DL_PC.xlxs** and ** maintenance** list the dependency-based DL and PC maintenance scores, maintenance effors measured by six metrics mined from revision history.
+
+## 3. PyDepExtractor-benchmarks
+It includes the execution traces collected from 4 projects. See the four folders under this directory.
+
+** P1-Pn-benchmarks.csv** lists the benchmarks collected from execution traces.
+ 
