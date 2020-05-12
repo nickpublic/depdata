@@ -37,10 +37,10 @@ This directory include the analysis data of co-change capturing results, mainten
 
 **The files whose name start with subspace-** lists the detail and summarized data related to sub-spaces extracted by DRSpace technique. 
 
-** DL_PC.xlxs** and ** maintenance** list the dependency-based DL and PC maintenance scores, maintenance effors measured by six metrics mined from revision history.
+**DL_PC.xlxs** and **maintenance** list the dependency-based DL and PC maintenance scores, maintenance effors measured by six metrics mined from revision history.
 
 ## 3. PyDepExtractor-benchmarks
 It includes the execution traces collected from 4 projects. See the four folders under this directory.
 
-** P1-Pn-benchmarks.csv** lists the benchmarks collected from execution traces.
+**P1-Pn-benchmarks.csv** lists the benchmarks collected from execution traces.
  
